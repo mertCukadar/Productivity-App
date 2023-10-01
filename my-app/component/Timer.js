@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Slider from "@react-native-community/slider";
-import CheckBox from 'expo-checkbox';
 import { CustomButton } from "./Button";
+import { TodoItem } from "./TodoItem";
 
 export function Timer() {
   const [time, setTime] = useState(0);
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [running, setRunning] = useState(false);
+  let timer = null; // timer değişkenini burada tanımlayın ve null olarak başlatın
 
   const onSliderValueChange = (value) => {
     setTime(value);
@@ -37,15 +37,12 @@ export function Timer() {
   };
 
   useEffect(() => {
-    let timer;
-
     if (running && time > 0) {
       timer = setInterval(() => {
         setTime((prevTime) => prevTime - 1);
       }, 1000);
-      console.log(running, time);
     } else if (time === 0) {
-        stopTimer();
+      stopTimer();
     }
 
     return () => {
@@ -65,7 +62,7 @@ export function Timer() {
           <Text style={styles.sliderTimer}>{formatTime(time)}</Text>
           <Slider
             style={styles.slider}
-            minimumValue={600}
+            minimumValue={3600 / 6}
             maximumValue={3600 * 2}
             step={300}
             minimumTrackTintColor="#146C94"
@@ -83,9 +80,9 @@ export function Timer() {
           onPress={running ? stopTimer : startTimer}
           buttonText={running ? "Stop" : "Start"}
         />
-
-
+        <TodoItem />
       </View>
+      
     </LinearGradient>
   );
 }
@@ -118,4 +115,5 @@ const styles = StyleSheet.create({
     color: '#19A7CE',
     fontWeight: 'bold',
   },
+  
 });
