@@ -1,9 +1,10 @@
-import React from "react";
-import { StyleSheet, Text, Pressable } from 'react-native';
+import React , {useState} from "react";
+import { StyleSheet, Text, Pressable , View } from 'react-native';
+import CheckBox from 'expo-checkbox';
 
 export function TodoItem(props) {
   const { onPress, buttonText, width, disabled } = props;
-
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
   return (
     <View style={styles.todoContainer}>
     <View style={styles.leftSide}>
