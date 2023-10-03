@@ -53,10 +53,7 @@ export function Timer() {
   }, [running, time]);
 
   return (
-    <LinearGradient
-      flex={1}
-      colors={["#AFD3E2", "#F6F1F1"]}
-    >
+
       <View style={styles.container}>
         <View style={styles.stopwatch}>
           <Text style={styles.sliderTimer}>{formatTime(time)}</Text>
@@ -75,15 +72,9 @@ export function Timer() {
 
           <Text style={styles.watchMod}>. .</Text>
         </View>
-        <CustomButton
-          width={300}
-          onPress={running ? stopTimer : startTimer}
-          buttonText={running ? "Stop" : "Start"}
-        />
-        <TodoItem />
       </View>
       
-    </LinearGradient>
+  
   );
 }
 
