@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View , Dimensions } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Slider from "@react-native-community/slider";
 import { CustomButton } from "./Button";
 import { TodoItem } from "./TodoItem";
 
+
+
+
 export function Timer() {
+  
+
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(false);
   let timer = null; // timer değişkenini burada tanımlayın ve null olarak başlatın
@@ -55,6 +60,9 @@ export function Timer() {
   return (
 
       <View style={styles.container}>
+        <View style = {styles.modSwitch}>
+            <Text style={styles.watchMod}>. .</Text>
+          </View>
         <View style={styles.stopwatch}>
           <Text style={styles.sliderTimer}>{formatTime(time)}</Text>
           <Slider
@@ -63,14 +71,18 @@ export function Timer() {
             maximumValue={3600 * 2}
             step={300}
             minimumTrackTintColor="#146C94"
-            maximumTrackTintColor="#000000"
+            maximumTrackTintColor="#D9D9D9"
             thumbTintColor="#19A7CE"
             value={time}
             onValueChange={onSliderValueChange}
             disabled={running}
           />
-
-          <Text style={styles.watchMod}>. .</Text>
+          
+          <CustomButton
+          width={300}
+          onPress={running ? stopTimer : startTimer}
+          buttonText={running ? "Stop" : "Start"}
+        />
         </View>
       </View>
       
@@ -91,20 +103,32 @@ const styles = StyleSheet.create({
   sliderTimer: {
     fontSize: 50,
     fontWeight: 'bold',
-    color: 'black',
+    color: '#D9D9D9',
   },
   stopwatch: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#F6F1F1',
     borderRadius: 10,
     width: 300,
     height: 175,
   },
   watchMod: {
-    fontSize: 20,
+    fontSize: 25,
     color: '#19A7CE',
+    position: 'absolute',
+    paddingBottom: 15,
     fontWeight: 'bold',
   },
+
+  modSwitch: {
+    width: 40,
+    height: 15,
+    borderRadius: 20,
+    opacity: 0.2,
+    backgroundColor: '#D9D9D9',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 11,
+  }
   
 });
