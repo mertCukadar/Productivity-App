@@ -4,6 +4,7 @@ import { Timer } from "../Timer";
 import { CustomButton } from "../Button";
 import { ContributionChart } from "../ContributionChart";
 import { Navigation } from "../Navigation";
+import { StrikeComp } from "../Strike";
 
 export function MainPage() {
   const [running, setRunning] = useState(false);
@@ -15,8 +16,10 @@ export function MainPage() {
       <View style={styles.timerContainer}>
         <Timer />
       </View>
+
       <View style = {styles.statusContainer}>
-          <ContributionChart />
+      <Text style = {styles.statusText}>Status</Text>
+          <StrikeComp />
       </View>
     </View>
   );
@@ -52,4 +55,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     flexDirection: "column",
   },
+  statusText:
+    {
+        fontSize: 20,
+        color: '#7289DA',
+        fontWeight: 'light',
+        marginTop: 20,
+    }
 });
