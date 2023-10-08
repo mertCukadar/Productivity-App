@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View , Dimensions } from "react-native";
-import { LinearGradient } from 'expo-linear-gradient';
 import Slider from "@react-native-community/slider";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { CustomButton } from "./Button";
-import { TodoItem } from "./TodoItem";
 
 
 
@@ -22,7 +20,7 @@ export function Timer() {
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = timeInSeconds % 60;
-    return `${minutes} : ${seconds.toString().padStart(2, "0")}`;
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
   const startTimer = () => {
@@ -60,9 +58,6 @@ export function Timer() {
   return (
 
       <View style={styles.container}>
-        <View style = {styles.modSwitch}>
-            <Text style={styles.watchMod}>. .</Text>
-          </View>
         <View style={styles.stopwatch}>
           <Text style={styles.sliderTimer}>{formatTime(time)}</Text>
           <Slider
@@ -70,18 +65,20 @@ export function Timer() {
             minimumValue={3600 / 6}
             maximumValue={3600 * 2}
             step={300}
-            minimumTrackTintColor="#146C94"
+            minimumTrackTintColor="#7289DA"
             maximumTrackTintColor="#D9D9D9"
-            thumbTintColor="#19A7CE"
+            thumbTintColor="#D9D9D9"
             value={time}
             onValueChange={onSliderValueChange}
             disabled={running}
           />
           
           <CustomButton
-          width={300}
+          width={100}
           onPress={running ? stopTimer : startTimer}
           buttonText={running ? "Stop" : "Start"}
+          borderRadius={60}
+
         />
         </View>
       </View>
@@ -102,7 +99,7 @@ const styles = StyleSheet.create({
   },
   sliderTimer: {
     fontSize: 50,
-    fontWeight: 'bold',
+    fontWeight: 'light',
     color: '#D9D9D9',
   },
   stopwatch: {
@@ -114,7 +111,7 @@ const styles = StyleSheet.create({
   },
   watchMod: {
     fontSize: 25,
-    color: '#19A7CE',
+    color: '#7289DA',
     position: 'absolute',
     paddingBottom: 15,
     fontWeight: 'bold',
