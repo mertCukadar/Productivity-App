@@ -1,18 +1,15 @@
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import React from "react";
-import { StyleSheet, Text, Pressable , View, Dimensions } from 'react-native';
-import { CustomButton } from "./Button";
-import { AntDesign } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 
 
 export function Navigation(){
     return(
         <View style = {styles.container}>
             <View style = {styles.buttonContainer}>
-                <Ionicons name="menu-outline" size={30} color="#D9D9D9" style = {{marginLeft:10, opacity:0.5}} /> 
+                <Ionicons name="menu-outline" size={40} color="#7289DA" style = {{marginLeft:10, opacity:0.5}} /> 
                 <Text style = {styles.pageName}>Kronometre</Text>
-                <MaterialIcons name="account-circle" size={30} color="#D9D9D9"  style = {{marginRight:10 , opacity:0.5}}/>
+                <MaterialIcons name="account-circle" size={35} color="#7289DA"  style = {{marginRight:10 , opacity:0.5}}/>
             </View>
         </View>
     );
@@ -35,8 +32,8 @@ const styles = StyleSheet.create({
     pageName: {
         fontSize: 20,
         opacity: 0.5,
-        fontFamily: 'times new roman',
-        color: '#D9D9D9',
+        fontFamily: 'sans-serif',
+        color: '#7289DA',
         fontWeight: 'light',
     }
 });
