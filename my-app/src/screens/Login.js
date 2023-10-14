@@ -1,12 +1,14 @@
 import React, { Fragment } from "react";
-import { StyleSheet, Text, View, SafeAreaView, TextInput, Pressable } from "react-native";
+import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
 import { Dimensions } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-import { AntDesign } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
-import { Divider } from '@rneui/themed';
+import OrDivider from "../component/Divider/orDivider";
+import DontAccount from "../component/Account/DontAccount";
+import { Alert } from "react-native";
+
 
 export function Login() {
+  // Function to handle button press
   const onPress = () => {
     Alert.alert('Button Pressed', 'You pressed the button!', [
       { text: 'OK', onPress: () => console.log('OK Pressed') },
@@ -20,34 +22,33 @@ export function Login() {
     <Fragment>
       <LinearGradient
         flex={1}
-        colors={["#19A7CE", "#AFD3E2", "#F6F1F1"]}
-        style={styles.LinearGradient}
+        colors={["#252B31", "#24292E" ]}
+        style={styles.linearGradient}
       >
         <View style={styles.container}>
           <View style={styles.title}>
-            <Text style={styles.loginTag}> Logo </Text>
+            <Text style={styles.loginTag}> BRAND </Text>
           </View>
 
           <View style={styles.propContainer}>
-            <TextInput style={styles.username} placeholder="Username or Email" />
-            <TextInput
-              secureTextEntry={true}
-              style={styles.password}
-              placeholder="Password"
-            />
+            <View style={styles.loginInputContainer}>
+              <TextInput style={styles.username} placeholder="Username or Email" />
+              <TextInput
+                secureTextEntry={true}
+                style={styles.password}
+                placeholder="Password"
+              />
 
-            <Pressable style={styles.button} onPress={onPress}>
-              <Text style={styles.loginText}>Login</Text>
-            </Pressable>
-
-            <Text style={{ marginTop: 30 }}>
-              want to create an account?{" "}
-              <Text style={{ color: "#19A7CE" }}>Sign Up</Text>
+              <Pressable style={styles.button} onPress={onPress}>
+                <Text style={styles.loginText}>Login</Text>
+              </Pressable>
+            </View>
+            <Text style={styles.FpasswordText}>
+              Forgot your password?{" "}
             </Text>
-            <Divider style={styles.divider} />
+            <OrDivider />
             <View style={styles.oAuth}>
-              <AntDesign name="google" size={24} color="#19A7CE" />
-              <Entypo name="linkedin" size={24} color="#19A7CE" />
+              <DontAccount />
             </View>
           </View>
         </View>
@@ -56,6 +57,8 @@ export function Login() {
   );
 }
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -63,9 +66,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   propContainer: {
-    width: "80%", // windowWidth * 0.8,
-    height: "50%", // windowHeight * 0.5,
-    borderRadius: 10,
+    width: "80%",
+    height: "50%",
+    borderRadius: 20,
     alignItems: "center",
   },
   loginTag: {
@@ -77,53 +80,46 @@ const styles = StyleSheet.create({
   username: {
     width: 250,
     height: 40,
-    backgroundColor: "#fff",
-    borderRadius: 5,
+    backgroundColor: "#F6F1F1",
+    borderRadius: 20,
     borderColor: "#F6F1F1",
     borderWidth: 1,
     textAlign: "center",
-    marginTop: 100,
   },
   title: {
     color: "#F6F1F1",
     fontSize: 50,
-    borderRadius: 10,
-    marginLeft: 50,
-    marginRight: 50,
+    marginVertical: 50,
   },
   password: {
     width: 250,
     height: 40,
     backgroundColor: "#fff",
-    borderRadius: 5,
+    borderRadius: 20,
     borderColor: "#F6F1F1",
     borderWidth: 1,
     textAlign: "center",
-    marginTop: 10,
+    marginTop: 18,
   },
   button: {
     width: 250,
     height: 40,
     backgroundColor: "#19A7CE",
-    borderRadius: 5,
+    borderRadius: 20,
     borderColor: "#19A7CE",
-    alignItems: "center",
     borderWidth: 1,
-    textAlign: "center",
-    marginTop: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 19,
   },
   loginText: {
     color: "#F6F1F1",
     fontSize: 15,
     fontWeight: "bold",
-    textAlign: "center",
-    marginTop: 5,
   },
   oAuth: {
-    flexDirection: "row",
-    marginTop: 40,
-    width: 60,
-    justifyContent: "space-between",
+    width: 300,
+    
   },
   divider: {
     marginTop: 40,
@@ -131,6 +127,26 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: "#146C94",
   },
+  loginInputContainer: {
+    backgroundColor: '#30373E',
+    borderRadius: 20,
+    paddingTop: 25,
+    paddingBottom: 25,
+    paddingLeft: 20,
+    paddingRight: 20,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  linearGradient: {
+    flex: 1,
+    colors: ["#252B31", "#24292E"],
+  },
+  FpasswordText: {
+    color: "#19A7CE",
+    marginTop: 10,
+  },
+
 });
 
 export default Login;
