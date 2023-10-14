@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, Pressable, SafeAreaView , View, TextInput } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { TodoItem } from "../TodoItem";
+import { TodoItem } from "../component/Todo/TodoItem";
 
 export function Todo(props) {
     return (
