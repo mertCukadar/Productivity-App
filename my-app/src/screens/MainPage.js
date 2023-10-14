@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
-import { Timer } from "../Timer";
-import { CustomButton } from "../Button";
-import { ContributionChart } from "../ContributionChart";
-import { Navigation } from "../Navigation";
-import { StrikeComp } from "../Strike";
+import { Timer } from "../component/Timer/Timer";
+import { Navigation } from "../component/Navigation/Navigation";
+import { StrikeComp } from "../component/Statistics/Strike";
 
 export function MainPage() {
   const [running, setRunning] = useState(false);
