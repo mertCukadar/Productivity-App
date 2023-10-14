@@ -8,7 +8,7 @@ export function StrikeComp() {
             <View style={styles.container}>
             <Image
                 style={styles.image}
-                source={require('../assets/Strike.png')} 
+                source={require('../../assets/Strike.png')} 
             />
             <Text style = {styles.strikeDay}>3 Days</Text>
         </View>
