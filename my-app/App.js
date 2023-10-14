@@ -1,15 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { Login } from './component/pages/Login';
-import { Timer } from './component/Timer';
-import { ContributionChart } from './component/ContributionChart';
-import { Todo } from './component/pages/Todo';
-import { MainPage } from './component/pages/MainPage';
+import { Login } from './src/screens/Login';
+import { Timer } from './src/component/Timer/Timer';
+import { ContributionChart } from './src/component/Statistics/ContributionChart';
+import { Todo } from './src/screens/Todo';
+import { MainPage } from './src/screens/MainPage';
 
 export default function App() {
   return (
     <View style = {styles.container}>
-        <MainPage />
+        <Login />
     </View>
   );
 
