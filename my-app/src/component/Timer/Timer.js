@@ -1,7 +1,7 @@
 import Slider from "@react-native-community/slider";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { CustomButton } from "./Button";
+import { CustomButton } from "../Buttons/Button";
 
 
 
