@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
-import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
+import {StyleSheet,Text, View, TextInput, Pressable } from "react-native";
 import { Dimensions } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import OrDivider from "../component/Divider/orDivider";
-import DontAccount from "../component/Account/DontAccount";
+import { GreenButton } from "../component/CustomButton/GreenButton";
 import { Alert } from "react-native";
+import { BlueButton } from "../component/CustomButton/BlueButton";
 
 
 export function Login() {
@@ -48,7 +49,7 @@ export function Login() {
             </Text>
             <OrDivider />
             <View style={styles.oAuth}>
-              <DontAccount />
+              <GreenButton buttonText = "Create Account"/>
             </View>
           </View>
         </View>
