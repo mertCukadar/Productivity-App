@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
-import { Timer } from "../component/Timer/Timer";
+import { Timer } from "../component/Timer";
 import { Navigation } from "../component/Navigation/Navigation";
 import { StrikeComp } from "../component/Statistics/Strike";
 
@@ -61,3 +61,5 @@ const styles = StyleSheet.create({
         marginTop: 20,
     }
 });
+
+export default MainPage;
