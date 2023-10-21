@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import {StyleSheet,Text, View, TextInput, Pressable } from "react-native";
 import { Dimensions } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-import OrDivider from "../component/Divider/orDivider";
+import { CustomDivider } from "../component/Divider";
 import { GreenButton } from "../component/CustomButton/GreenButton";
 import { Alert } from "react-native";
 import { BlueButton } from "../component/CustomButton/BlueButton";
@@ -47,7 +47,7 @@ export function Login() {
             <Text style={styles.FpasswordText}>
               Forgot your password?{" "}
             </Text>
-            <OrDivider />
+            <CustomDivider dividerText = "OR"/>
             <View style={styles.oAuth}>
               <GreenButton buttonText = "Create Account"/>
             </View>

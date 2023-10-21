@@ -1,0 +1,1 @@
+export {CustomDivider} from "./customDivider";

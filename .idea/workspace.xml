@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2646fa1d-2cce-4d96-886f-5fd87db11782" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.expo/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.expo/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/Account/DontAccount.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/Buttons/Button.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/Timer/Timer.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/Timer/Timer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/component/Divider/orDivider.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/src/screens/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/screens/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
