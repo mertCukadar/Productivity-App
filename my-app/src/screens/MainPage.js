@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { Timer } from "../component/Timer";
-import { Navigation } from "../component/Navigation/Navigation";
+import { NavigationBar } from "../component/NavigationBar";
 import { StrikeComp } from "../component/Statistics/Strike";
 
 export function MainPage() {
   const [running, setRunning] = useState(false);
   return (
     <View style={styles.container}>
-        <View style = {styles.buttonContainer}>
-            <Navigation />
-        </View>
       <View style={styles.timerContainer}>
         <Timer />
       </View>
@@ -18,6 +15,9 @@ export function MainPage() {
       <View style = {styles.statusContainer}>
       <Text style = {styles.statusText}>Status</Text>
           <StrikeComp />
+      </View>
+      <View style={styles.buttonContainer}>
+        <NavigationBar />
       </View>
     </View>
   );
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width * 0.9,
     height: Dimensions.get("window").height * 0.5,
     alignItems: "center",
-    borderRadius: 10,
+    borderRadius: 20,
     justifyContent: "center",
     backgroundColor: "#2B3137",
   },
@@ -44,19 +44,19 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: 20,
     alignItems: "center",
-    borderRadius: 10,
+    borderRadius: 20,
     justifyContent: "center",
     backgroundColor: "#2B3137",
   },
   buttonContainer: {
     width: Dimensions.get("window").width * 0.9,
-    marginBottom: 20,
     flexDirection: "column",
+    marginTop: 20,
   },
   statusText:
     {
         fontSize: 20,
-        color: '#7289DA',
+        color: '#19A7CE',
         fontWeight: 'light',
         marginTop: 20,
     }

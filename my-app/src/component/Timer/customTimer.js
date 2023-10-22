@@ -66,7 +66,7 @@ export function Timer() {
             minimumValue={3600 / 6}
             maximumValue={3600 * 2}
             step={300}
-            minimumTrackTintColor="#7289DA"
+            minimumTrackTintColor="#19A7CE"
             maximumTrackTintColor="#D9D9D9"
             thumbTintColor="#D9D9D9"
             value={time}
