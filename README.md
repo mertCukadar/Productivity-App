@@ -15,7 +15,7 @@ We're excited to introduce your new agenda, now conveniently available right in 
 - No need to manage every task individually; you can now assign tasks to your friends.
 - Keep track of your time spent and improve yourself with professional and reliable statistical outputs.
 
-![Landing](./Images/3.jpg)
+![Landing](./Images/6.png)
 
 ## Installation:
 
@@ -26,5 +26,7 @@ $ sudo npm install
 
 $ npx expo start
 ```
+
+![Landing](./Images/3.jpg)
 
 ## Enjoy organizing your tasks and projects with this innovative app!
