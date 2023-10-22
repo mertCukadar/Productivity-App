@@ -4,7 +4,7 @@
 
 ![Landing](./Images/1.jpg)
 
-> We're excited to introduce your new agenda, now conveniently available right in your pocket. Just open the application and start efficiently managing all your personal and co-working projects in one place.
+We're excited to introduce your new agenda, now conveniently available right in your pocket. Just open the application and start efficiently managing all your personal and co-working projects in one place.
 
 ![Landing](./Images/2.jpg)
 
