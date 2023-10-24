@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, Pressable, SafeAreaView , View, TextInput } from 'react-native';
+import { StyleSheet, Text, Pressable, SafeAreaView , View, TextInput , ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { TodoItem } from "../../component/Todo/TodoItem";
 import { Dimensions } from 'react-native';
+import { TodoItem } from "../../component/Todo";
 
 
 
@@ -10,15 +10,31 @@ export function TodoScreen(props) {
     return (
     
            <View style={styles.container}>
+            
+            {/* Search Component */}
                 <View style = {styles.searchWrapper}>
                     <Text style = {{color : "white"}}>search panel</Text>
                 </View>
+
+            {/*Todo Component  */}
                 <View style = {styles.todoWrapper}>
-                    <Text style = {{color : "white"}}>todo panel</Text>
+                    <ScrollView>
+                    <TodoItem />
+                    <TodoItem />
+                    <TodoItem />
+                    <TodoItem />
+                    <TodoItem />
+                    <TodoItem />
+                    <TodoItem />
+
+                    </ScrollView>
                 </View>
+
+            {/* DoneContainer */}
                 <View style = {styles.doneWrapper}>
                     <Text style = {{color : "white"}}>done panel</Text>
                 </View>
+            
             </View>
     
 
@@ -45,7 +61,6 @@ const styles = StyleSheet.create({
     },
     todoWrapper: {
         flex: 4,
-        justifyContent: "center",
         alignItems: 'center',
         backgroundColor: '#2B3137',
         marginBottom: 30,
