@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2646fa1d-2cce-4d96-886f-5fd87db11782" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/CustomTabNavigator/CustomBarIcon/customBarIcon.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/CustomTabNavigator/customTabNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/CustomTabNavigator/customTabNavigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/NavigationBar/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/NavigationBar/navigationBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/component/NavigationBar/styles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/screens/Login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/screens/MainPage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-app/src/screens/Todo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/component/Todo/TodoItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/Todo/TodoItem.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
