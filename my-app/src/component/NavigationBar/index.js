@@ -1,2 +1,0 @@
-export { NavigationBar } from "./navigationBar";
-
