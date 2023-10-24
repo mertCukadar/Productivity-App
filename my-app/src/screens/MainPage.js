@@ -16,9 +16,7 @@ export function MainPage() {
       <Text style = {styles.statusText}>Status</Text>
           <StrikeComp />
       </View>
-      <View style={styles.buttonContainer}>
-        <NavigationBar />
-      </View>
+      
     </View>
   );
 }
