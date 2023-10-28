@@ -28,6 +28,8 @@ export function CustomTabNavigator() {
       backgroundColor: '#30373E',
       marginHorizontal: 12,
       marginVertical: 9,
+      height:50,
+      width: 50,
       borderRadius: 20,
     },
   };
