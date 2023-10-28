@@ -7,7 +7,7 @@ export function NotificationScreen(props) {
     return (
         
            <View style={styles.container}>
-                <Text style = {{color:"white"}}>Notification Screen</Text>
+                <Text style = {{color:"white"}}>deneme Screen</Text>
             </View>
         
 
@@ -21,5 +21,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#24292E',
     },
+  
 });
 
