@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, Pressable, View, Image } from 'react-native';
 import CheckBox from 'expo-checkbox';
+import { Dimensions } from "react-native";
 
 export function TodoItem(props) {
   const { onPress, buttonText, width, disabled, priority, isDone } = props;
@@ -34,20 +35,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#30373E',
     padding: 10,
     borderRadius: 15,
-    width: 300,
+    width:  Dimensions.get('window').width * 0.8,
     height: 66,
     marginTop: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
   },
   itemText: {
     fontSize: 16,
@@ -79,21 +72,9 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   doneContainer: {
-    width: 300,
+    width:  Dimensions.get('window').width * 0.8,
     height: 1,
     backgroundColor: '#19A7CE', // Arka plan rengini transparent (saydam) yapın
     position: "absolute",
-    shadowColor: "#19A7CE", // Gölge rengini istediğiniz parlak renge ayarlayın
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    shadowOpacity: 1, // Gölge opaklığını maksimuma çıkarın
-    shadowRadius: 5, // Gölge yarıçapını ayarlayarak çizgiyi daha belirgin hale getirin
-    elevation: 3,
-    zIndex: 1, // Diğer içerikler üzerine gelmesini sağlamak için bir z-indeksi ekleyin
-    marginTop: 5, // Görüntüyü diğer içeriklerden yukarı taşımak için bir üst boşluk ekleyin
-    transition: "width 1s",// Çizgi boyutunda geçiş efekti ekleyin
   },
-  
 });
