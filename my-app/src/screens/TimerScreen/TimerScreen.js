@@ -1,25 +1,19 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Dimensions ,SafeAreaView} from "react-native";
+import { View, Text, StyleSheet, Dimensions, SafeAreaView } from "react-native";
 import { Timer } from "../../component/Timer";
 import { StrikeComp } from "../../component/Statistics/Strike";
 
 export function TimerScreen() {
   const [running, setRunning] = useState(false);
   return (
-    <SafeAreaView style = {{flex : 1}}>
-    <View style={styles.container}>
-     
+    <SafeAreaView style={styles.container}>
       <View style={styles.timerContainer}>
         <Timer />
       </View>
 
-      <View style = {styles.statusContainer}>
-          <StrikeComp />
+      <View style={styles.statusContainer}>
+        <StrikeComp />
       </View>
-   
-     
-      
-    </View>
     </SafeAreaView>
   );
 }
@@ -32,7 +26,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#24292E",
   },
   timerContainer: {
-    
     width: Dimensions.get("window").width * 0.9,
     height: Dimensions.get("window").height * 0.5,
     alignItems: "center",
@@ -55,12 +48,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     marginTop: 20,
   },
-  statusText:
-    {
-        fontSize: 20,
-        color: '#19A7CE',
-        fontWeight: 'light',
-        marginTop: 20,
-    }
+  statusText: {
+    fontSize: 20,
+    color: '#19A7CE',
+    fontWeight: 'light',
+    marginTop: 20,
+  },
 });
-
