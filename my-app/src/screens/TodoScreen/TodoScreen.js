@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, Pressable, SafeAreaView , View, TextInput , ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
 import { TodoItem } from "../../component/Todo";
 
-
 function onPressFunction() {
     console.log("pressed");
 }
 
+
+
+
 export function TodoScreen(props) {
+    const [text , setText] = useState('')
+    const [todos , setTodos] = useState([])
+
+    function addTodo() {
+        // grep text inpu and add to todo list
+        if (text.trim() != '') {
+            setTodos([...todos , text]);
+            setText('');
+        }
+    }
+    
     return (
             <SafeAreaView style = {{flex : 1}}>
                      <View style={styles.container}>
@@ -20,26 +33,39 @@ export function TodoScreen(props) {
                     <View style = {styles.filterIconStyle}>
                         <AntDesign name="filter" size={24} color="white"  />
                     </View>
-                    <TextInput style = {styles.TodoSearchInput} placeholder=" Search In Todo" placeholderTextColor={"white"}></TextInput>
+                    <TextInput
+                     style = {styles.TodoSearchInput} 
+                     placeholder=" Search In Todo" 
+                     placeholderTextColor={"white"}
+                     maxLength={40}
+                     ></TextInput>
                 </View>
 
             {/*Todo Component  */}
                 <View style = {styles.todoWrapper}>
                     <ScrollView>
-                    <TodoItem/>
-                    <TodoItem />
-                    <TodoItem />
-                    <TodoItem />
-
+                        {todos.map((todo , index) => {
+                            return <TodoItem
+                            key = {index}
+                            todoText = {todo}
+                            isDone = {false}/>
+                           
+                        })}
                     
 
                     </ScrollView>
 
                     <View style = {styles.todoInputWrapper}>
-                        <Pressable onPress={onPressFunction} style = {styles.pressableWrapper}>
+                        <Pressable onPress={addTodo} style = {styles.pressableWrapper}>
                             <AntDesign name="plus" size={24} color="white" />
                         </Pressable>
-                        <TextInput style = {styles.todoInput}></TextInput>
+                        <TextInput
+                        placeholder="Add Todo"
+                        placeholderTextColor={"white"}
+                        style = {styles.todoInput}
+                        onChangeText={(newText) => setText(newText)}
+                        defaultValue={text}
+                        ></TextInput>
                      </View>
                   
                 </View>
@@ -48,10 +74,7 @@ export function TodoScreen(props) {
               
                 <View style = {styles.doneWrapper}>
                 <ScrollView>
-                    <TodoItem isDone = {true}/>
-                    <TodoItem isDone = {true}/>
-                    <TodoItem isDone = {true}/>
-                    <TodoItem isDone = {true}/>
+                    
 
                 </ScrollView>
                 </View>
