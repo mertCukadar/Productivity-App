@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2646fa1d-2cce-4d96-886f-5fd87db11782" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/component/CustomTabNavigator/customTabNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/CustomTabNavigator/customTabNavigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-app/src/component/Todo/TodoItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/component/Todo/TodoItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/screens/NoificationScreen/NoificationScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/screens/NoificationScreen/NoificationScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/screens/TimerScreen/TimerScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/screens/TimerScreen/TimerScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-app/src/screens/TodoScreen/TodoScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/my-app/src/screens/TodoScreen/TodoScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
