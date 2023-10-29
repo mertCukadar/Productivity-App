@@ -12,17 +12,18 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-  
+   
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator >
         <Stack.Screen
           name="Home"
           component={CustomTabNavigator}
           options={{ headerShown: false }}
+          
         />
       </Stack.Navigator>
     </NavigationContainer>
-
+    
   );
 }
 
