@@ -17,7 +17,10 @@ export function TodoScreen(props) {
             
             {/* Search Component */}
                 <View style = {styles.searchWrapper}>
-                    <Text style = {{color : "white"}}>search panel</Text>
+                    <View style = {styles.filterIconStyle}>
+                        <AntDesign name="filter" size={24} color="white"  />
+                    </View>
+                    <TextInput style = {styles.TodoSearchInput} placeholder=" Search In Todo" placeholderTextColor={"white"}></TextInput>
                 </View>
 
             {/*Todo Component  */}
@@ -34,7 +37,7 @@ export function TodoScreen(props) {
 
                     <View style = {styles.todoInputWrapper}>
                         <Pressable onPress={onPressFunction} style = {styles.pressableWrapper}>
-                            <AntDesign name="plus" size={24} color="black" />
+                            <AntDesign name="plus" size={24} color="white" />
                         </Pressable>
                         <TextInput style = {styles.todoInput}></TextInput>
                      </View>
@@ -74,10 +77,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#2B3137',
         borderRadius: 20,
-        marginTop: 30,
+        marginTop: 50,
         marginBottom: 30,
         width: Dimensions.get("window").width * 0.9,
-        height: Dimensions.get("window").height * 0.08,
+        height: 50,
     },
     todoWrapper: {
         flex: 3,
@@ -99,13 +102,14 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     },
     todoInput: {
-        width: 300,
+        width:  Dimensions.get('window').width * 0.8,
         height: 50,
         backgroundColor: '#30373E',
         borderRadius: 15,
         color: "white",
-        fontSize: 20,
-        paddingLeft: 20,
+        fontSize: 17,
+        paddingLeft: 50,
+        flexWrap: "wrap",
    
       },
       
@@ -113,25 +117,53 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: 'center',
         height: 50,
-        marginBottom : 5,
+        marginBottom : 7,
         flexDirection: "row",
-        marginTop: 5,
+        marginTop: 7,
+        
         
         
     },
     pressableWrapper: {
         position: "absolute",
-        right: 0,
+        left: 0,
         zIndex: 1,
         width: 40,
         height: 50,
         borderRadius: 15,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#19A7CE",
+        backgroundColor: "#1d96b6",
+        opacity: 0.8,
         
         
     },
+
+    TodoSearchInput: {
+        width: Dimensions.get("window").width * 0.9,
+        height: 50,
+        backgroundColor: '#30373E',
+        borderRadius: 15,
+        color: "white",
+        fontSize: 17,
+        paddingLeft: 50,
+        
+   
+      },
+
+      filterIconStyle: {
+        position: "absolute",
+        left: 0,
+        zIndex: 1,
+        width: 40,
+        height: 50,
+        borderRadius: 15,
+        alignItems: "center",
+        justifyContent: "center",
+        opacity: 0.5,
+        backgroundColor: "#414C57",
+    
+      }
 
 });
 
