@@ -6,7 +6,7 @@ import { StrikeComp } from "../../component/Statistics/Strike";
 export function TimerScreen() {
   const [running, setRunning] = useState(false);
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.timerContainer}>
         <Timer />
       </View>
@@ -14,7 +14,8 @@ export function TimerScreen() {
       <View style={styles.statusContainer}>
         <StrikeComp />
       </View>
-    </SafeAreaView>
+    </View>
+  
   );
 }
 
