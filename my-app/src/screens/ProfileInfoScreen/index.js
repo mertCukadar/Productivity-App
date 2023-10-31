@@ -1,0 +1,1 @@
+export {ProfileInfoScreen} from "./ProfileInfoScreen";
