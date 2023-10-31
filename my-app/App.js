@@ -4,9 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CustomTabNavigator } from './src/component/CustomTabNavigator/customTabNavigator';
 import { View } from 'react-native';
+import { ProfileInfoScreen } from './src/screens/ProfileInfoScreen';
 
 
-const Tab = createBottomTabNavigator();
+
 const Stack = createNativeStackNavigator();
 
 
@@ -21,6 +22,10 @@ function App() {
           options={{ headerShown: false }}
           
         />
+        <Stack.Screen
+         name="ProfileInfoScreen"
+          component={ProfileInfoScreen} 
+          options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
     
