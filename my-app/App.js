@@ -5,6 +5,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CustomTabNavigator } from './src/component/CustomTabNavigator/customTabNavigator';
 import { View } from 'react-native';
 import { ProfileInfoScreen } from './src/screens/ProfileInfoScreen';
+import * as SystemUI from "expo-system-ui";
+
+SystemUI.setBackgroundColorAsync("#24292E");
+
 
 
 
