@@ -25,7 +25,7 @@ export function TodoScreen(props) {
     }
     
     return (
-            <SafeAreaView style = {{flex : 1}}>
+          
                      <View style={styles.container}>
             
             {/* Search Component */}
@@ -80,7 +80,7 @@ export function TodoScreen(props) {
                 </View>
 
                 </View>
-            </SafeAreaView>
+          
           
     
 
