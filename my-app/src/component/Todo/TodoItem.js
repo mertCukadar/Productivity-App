@@ -4,12 +4,13 @@ import CheckBox from 'expo-checkbox';
 import { Dimensions } from "react-native";
 
 export function TodoItem(props) {
-  const { onPress, todoText, width, disabled, priority, isDone , subjectTag = "None" } = props;
+  const { onPress, todoText, width, disabled, priority, isDone} = props;
   const [modalVisible, setModalVisible] = useState(false);
   const [todoFieldText, setTodoFieldText] = useState(todoText);
   const [assigneeText, setAssigneeText] = useState('');
   const [subjectTagText, setSubjectTagText] = useState('');
   const [descriptionText, setDescriptionText] = useState('');
+  let assignee , subjectTag , description;
 
 
   return (
@@ -24,7 +25,7 @@ export function TodoItem(props) {
       <View style={styles.elementWrapper}>
         <Text style={styles.itemText}>{todoFieldText}</Text>
         <View style={styles.subjectTagWrapper}>
-          <Text style={{ color: 'white' }}>{subjectTag}</Text>
+          <Text style={{ color: 'white' }}>{subjectTagText}</Text>
         </View>
       </View>
 
@@ -36,6 +37,7 @@ export function TodoItem(props) {
       </View>
     </View>
     </Pressable>
+   
     <Modal
         animationType="slide"
         transparent={true}
@@ -46,7 +48,9 @@ export function TodoItem(props) {
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalHeader}>Edit Todo</Text>
+            <View style = {{flexDirection: 'row'}}>
+            <Text style={styles.modalHeader}>Title</Text>
+            </View>
             <TextInput
               style={styles.modalTextInput}
               placeholderTextColor={"white"}
@@ -54,6 +58,9 @@ export function TodoItem(props) {
               value={todoFieldText}
               onChangeText={text => setTodoFieldText(text)}
             />
+               <View style = {{flexDirection: 'row'}}>
+            <Text style={styles.modalHeader}>Assignee</Text>
+               </View>
             <TextInput
               style={styles.modalTextInput}
               placeholderTextColor={"white"}
@@ -61,6 +68,11 @@ export function TodoItem(props) {
               value={assigneeText}
               onChangeText={text => setAssigneeText(text)}
             />
+
+
+                   <View style = {{flexDirection: 'row'}}>
+            <Text style={styles.modalHeader}>Subject</Text>
+               </View>
             <TextInput
               style={styles.modalTextInput}
               placeholderTextColor={"white"}
@@ -68,6 +80,10 @@ export function TodoItem(props) {
               value={subjectTagText}
               onChangeText={text => setSubjectTagText(text)}
             />
+            
+            <View style = {{flexDirection: 'row'}}>
+            <Text style={styles.modalHeader}>Description</Text>
+               </View>
             <TextInput
               style={styles.modalTextInput}
               placeholderTextColor={"white"}
@@ -75,15 +91,17 @@ export function TodoItem(props) {
               value={descriptionText}
               onChangeText={text => setDescriptionText(text)}
             />
+
+            <View style = {{flexDirection: 'row' , alignItems: "flex-end"}}>
             <Pressable
               style={styles.modalSaveButton}
               onPress={() => {
-                // Handle saving the edited text here
                 setModalVisible(false);
               }}
             >
               <Text style={styles.saveButtonText}>Save</Text>
             </Pressable>
+            </View>
           </View>
         </View>
       </Modal>
@@ -161,11 +179,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    height: Dimensions.get('window').height*0.8,
-    backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent black background
+    backgroundColor: 'rgba(0, 0, 0, 0.3)', 
+  },
+
+  modalContent: {
+    backgroundColor: '#2B3137',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    width: Dimensions.get("window").width * 0.9,
+    height: Dimensions.get("window").height * 0.7,
   },
   modalTextInput: {
-    width: Dimensions.get("window").width * 0.9,
+    width: Dimensions.get("window").width * 0.8,
     height: 50,
     backgroundColor: '#30373E',
     borderRadius: 15,
@@ -178,13 +204,19 @@ const styles = StyleSheet.create({
   modalSaveButton: {
     backgroundColor: '#1d96b6',
     borderRadius: 5,
-    position: 'absolute',
     padding: 10,
     alignItems: 'center',
     width: Dimensions.get("window").width * 0.3,
     elevation: 2,
-    right: 0,
-    top: 300,
+ 
+  
     
+  },
+  modalHeader: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    flex: 1,
   },
 });
