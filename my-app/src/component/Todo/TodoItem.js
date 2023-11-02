@@ -1,14 +1,18 @@
 import React, { useState , useEffect } from "react";
-import { StyleSheet, Text, Pressable, View, Image , Modal , TextInput} from 'react-native';
+import { StyleSheet, Text, Pressable, View, Image , Modal , TextInput } from 'react-native';
 import CheckBox from 'expo-checkbox';
 import { Dimensions } from "react-native";
+import { TodoModal } from "./ModalView";
+
+
+
 
 export function TodoItem(props) {
   const { onPress, todoText, width, disabled, priority, isDone} = props;
-  const [modalVisible, setModalVisible] = useState(false);
   const [todoFieldText, setTodoFieldText] = useState(todoText);
   const [assigneeText, setAssigneeText] = useState('');
   const [subjectTagText, setSubjectTagText] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
   const [descriptionText, setDescriptionText] = useState('');
   let assignee , subjectTag , description;
 
@@ -37,74 +41,7 @@ export function TodoItem(props) {
       </View>
     </View>
     </Pressable>
-   
-    <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(false);
-        }}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <View style = {{flexDirection: 'row'}}>
-            <Text style={styles.modalHeader}>Title</Text>
-            </View>
-            <TextInput
-              style={styles.modalTextInput}
-              placeholderTextColor={"white"}
-              placeholder="Todo Title"
-              value={todoFieldText}
-              onChangeText={text => setTodoFieldText(text)}
-            />
-               <View style = {{flexDirection: 'row'}}>
-            <Text style={styles.modalHeader}>Assignee</Text>
-               </View>
-            <TextInput
-              style={styles.modalTextInput}
-              placeholderTextColor={"white"}
-              placeholder="Assignee"
-              value={assigneeText}
-              onChangeText={text => setAssigneeText(text)}
-            />
-
-
-                   <View style = {{flexDirection: 'row'}}>
-            <Text style={styles.modalHeader}>Subject</Text>
-               </View>
-            <TextInput
-              style={styles.modalTextInput}
-              placeholderTextColor={"white"}
-              placeholder="Subject Tag"
-              value={subjectTagText}
-              onChangeText={text => setSubjectTagText(text)}
-            />
-            
-            <View style = {{flexDirection: 'row'}}>
-            <Text style={styles.modalHeader}>Description</Text>
-               </View>
-            <TextInput
-              style={styles.modalTextInput}
-              placeholderTextColor={"white"}
-              placeholder="Description"
-              value={descriptionText}
-              onChangeText={text => setDescriptionText(text)}
-            />
-
-            <View style = {{flexDirection: 'row' , alignItems: "flex-end"}}>
-            <Pressable
-              style={styles.modalSaveButton}
-              onPress={() => {
-                setModalVisible(false);
-              }}
-            >
-              <Text style={styles.saveButtonText}>Save</Text>
-            </Pressable>
-            </View>
-          </View>
-        </View>
-      </Modal>
+    <TodoModal modalVisible = {modalVisible} setModalVisible = {setModalVisible}/>
       </View>
   );
 }
@@ -174,49 +111,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width:  Dimensions.get('window').width * 0.1,
-  },
-    modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.3)', 
-  },
-
-  modalContent: {
-    backgroundColor: '#2B3137',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    width: Dimensions.get("window").width * 0.9,
-    height: Dimensions.get("window").height * 0.7,
-  },
-  modalTextInput: {
-    width: Dimensions.get("window").width * 0.8,
-    height: 50,
-    backgroundColor: '#30373E',
-    borderRadius: 15,
-    color: "white",
-    fontSize: 17,
-    paddingLeft: 50,
-    marginBottom: 10,
-
-  },
-  modalSaveButton: {
-    backgroundColor: '#1d96b6',
-    borderRadius: 5,
-    padding: 10,
-    alignItems: 'center',
-    width: Dimensions.get("window").width * 0.3,
-    elevation: 2,
- 
-  
-    
-  },
-  modalHeader: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    flex: 1,
   },
 });
