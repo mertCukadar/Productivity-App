@@ -6,18 +6,62 @@ import { CustomDivider } from "../../component/Divider";
 import { GreenButton } from "../../component/CustomButton/GreenButton";
 import { Alert } from "react-native";
 import { BlueButton } from "../../component/CustomButton/BlueButton";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
+import { axiosContext } from "../../context/axiosContext";
+import { useState } from "react";
+import { useEffect } from "react";
+import * as Keychain from 'react-native-keychain';
+
 
 
 export function LoginScreen() {
-  // Function to handle button press
+  const { authState, setAuthState, logout, getAccessToken } = useContext(AuthContext);
+  const {publicAxios} = useContext(axiosContext);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onLogin = async () => {
+    try {
+      console.log("username", username);
+      const response = await publicAxios.post("/auth/token/", {
+        username,
+        password,
+      });
+      
+      console.log("response data", response.data);
+      
+      const { accessToken, refreshToken } = response.data;
+      console.log(accessToken, refreshToken);
+      
+      setAuthState({
+        accessToken,
+        refreshToken,
+        authenticated: true,
+      });
+
+      await Keychain.setGenericPassword(
+        'token',
+        JSON.stringify({
+          accessToken,
+          refreshToken,
+        }),
+      );
+    } catch (error) {
+      console.error('Error during login request:', error.response.data);
+      Alert.alert('Login Failed', error.response.data.message);
+    }
+  };
+
+
   const onPress = () => {
     Alert.alert('Button Pressed', 'You pressed the button!', [
       { text: 'OK', onPress: () => console.log('OK Pressed') },
     ]);
   };
 
-  const windowWidth = Dimensions.get("window").width;
-  const windowHeight = Dimensions.get("window").height;
+
 
   return (
     <Fragment>
@@ -33,16 +77,26 @@ export function LoginScreen() {
 
           <View style={styles.propContainer}>
             <View style={styles.loginInputContainer}>
-              <TextInput style={styles.username} placeholder="Username or Email" />
-              <TextInput
-                secureTextEntry={true}
-                style={styles.password}
-                placeholder="Password"
-              />
+            <TextInput
+        style={styles.username}
+        placeholder="Username or Email"
+        onChangeText={text => setUsername(text)}
+        value={username}
+      />
 
-              <Pressable style={styles.button} onPress={onPress}>
+<TextInput
+        secureTextEntry={true}
+        style={styles.password}
+        placeholder="Password"
+        onChangeText={text => setPassword(text)}
+        value={password}
+      />
+              <Pressable style={styles.button} onPress={onLogin}>
                 <Text style={styles.loginText}>Login</Text>
               </Pressable>
+
+
+
             </View>
             <Text style={styles.FpasswordText}>
               Forgot your password?{" "}

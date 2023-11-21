@@ -12,7 +12,6 @@ const AuthProvider = ({ children }) => {
     authenticated: null,
   });
 
-  const [deneme , setDeneme] = useState("deneme")
 
   const logout = async () => {
     await Keychain.resetGenericPassword();
@@ -36,8 +35,6 @@ const AuthProvider = ({ children }) => {
         setAuthState,
         logout,
         getAccessToken,
-        deneme,
-        setDeneme,
       }}
     >
       {children}
