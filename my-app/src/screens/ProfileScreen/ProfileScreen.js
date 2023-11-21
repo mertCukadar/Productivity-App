@@ -2,16 +2,25 @@ import React from "react";
 import { StyleSheet, Text, Pressable, SafeAreaView , View, TextInput , Button, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TodoItem } from "../../component/Todo/TodoItem";
+import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from '@expo/vector-icons';
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
+
 
 
 
 export function ProfileScreen(props) {
     const navigation = useNavigation();
+    const {logout} = useContext(AuthContext);
 
+    const onLogout = async () => {
+        await logout();
+    }
     return (
-       
+  
+
        <View style={styles.container}>
                 <Pressable onPress={() => navigation.navigate("ProfileInfoScreen")} style = {styles.pressableWrapper}>
                     <AntDesign name="profile" size={24} color="white" style = {styles.antdesingWrapper} />
@@ -21,6 +30,11 @@ export function ProfileScreen(props) {
                 <Pressable onPress={() => navigation.navigate("ProfileInfoScreen")} style = {styles.pressableWrapper}>
                     <AntDesign name="barschart" size={24} color="white" style = {styles.antdesingWrapper} />
                     <Text style = {{color:"white"}}>Statistics</Text>
+                </Pressable>
+
+                <Pressable onPress={onLogout} style = {styles.pressableWrapper}>
+                    <MaterialIcons name="logout" size={24} color="white" style = {styles.antdesingWrapper} />
+                    <Text style = {{color:"white"}}>Log Out</Text>
                 </Pressable>
         </View>
        
