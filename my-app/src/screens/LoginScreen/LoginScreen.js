@@ -1,67 +1,62 @@
 import React, { Fragment } from "react";
 import {StyleSheet,Text, View, TextInput, Pressable } from "react-native";
-import { Dimensions } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { CustomDivider } from "../../component/Divider";
 import { GreenButton } from "../../component/CustomButton/GreenButton";
 import { Alert } from "react-native";
-import { BlueButton } from "../../component/CustomButton/BlueButton";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import { axiosContext } from "../../context/axiosContext";
 import { useState } from "react";
-import { useEffect } from "react";
-import * as Keychain from 'react-native-keychain';
-
+import * as SecureStore from 'expo-secure-store';
 
 
 export function LoginScreen() {
-  const { authState, setAuthState, logout, getAccessToken } = useContext(AuthContext);
-  const {publicAxios} = useContext(axiosContext);
+  const { publicAxios } = useContext(axiosContext);
+  const { setAuthState } = useContext(AuthContext);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const onLogin = async () => {
     try {
-      console.log("username", username);
       const response = await publicAxios.post("/auth/token/", {
         username,
         password,
       });
-      
-      console.log("response data", response.data);
-      
-      const { accessToken, refreshToken } = response.data;
-      console.log(accessToken, refreshToken);
-      
-      setAuthState({
-        accessToken,
-        refreshToken,
-        authenticated: true,
-      });
 
-      await Keychain.setGenericPassword(
-        'token',
-        JSON.stringify({
-          accessToken,
-          refreshToken,
-        }),
-      );
+      if (response.data) {
+        const { access, refresh } = response.data;
+
+        try {
+          await SecureStore.setItemAsync('refreshToken', refresh);
+          await SecureStore.setItemAsync('accessToken', access);
+          console.log('Tokens stored successfully');
+        } catch (error) {
+          console.error('Failed to store tokens:', error);
+        }
+
+        setAuthState({
+          accessToken: access,
+          refreshToken: refresh,
+          authenticated: true,
+        });
+
+      } else {
+        console.error('Empty or undefined response.data:', response);
+        // Handle the case where response.data is empty or undefined
+      }
     } catch (error) {
-      console.error('Error during login request:', error.response.data);
-      Alert.alert('Login Failed', error.response.data.message);
+      console.error('Error during login request:', error);
+      Alert.alert('Login Failed', error.response ? error.response.data.message : 'Unknown error');
     }
   };
-
 
   const onPress = () => {
     Alert.alert('Button Pressed', 'You pressed the button!', [
       { text: 'OK', onPress: () => console.log('OK Pressed') },
     ]);
   };
-
-
 
   return (
     <Fragment>
@@ -77,33 +72,34 @@ export function LoginScreen() {
 
           <View style={styles.propContainer}>
             <View style={styles.loginInputContainer}>
-            <TextInput
-        style={styles.username}
-        placeholder="Username or Email"
-        onChangeText={text => setUsername(text)}
-        value={username}
-      />
+              <TextInput
+                style={styles.username}
+                placeholder="Username or Email"
+                onChangeText={text => setUsername(text)}
+                value={username}
+              />
 
-<TextInput
-        secureTextEntry={true}
-        style={styles.password}
-        placeholder="Password"
-        onChangeText={text => setPassword(text)}
-        value={password}
-      />
+              <TextInput
+                secureTextEntry={true}
+                style={styles.password}
+                placeholder="Password"
+                onChangeText={text => setPassword(text)}
+                value={password}
+              />
+
               <Pressable style={styles.button} onPress={onLogin}>
                 <Text style={styles.loginText}>Login</Text>
               </Pressable>
-
-
-
             </View>
+
             <Text style={styles.FpasswordText}>
               Forgot your password?{" "}
             </Text>
-            <CustomDivider dividerText = "OR"/>
+
+            <CustomDivider dividerText="OR" />
+
             <View style={styles.oAuth}>
-              <GreenButton buttonText = "Create Account"/>
+              <GreenButton buttonText="Create Account" />
             </View>
           </View>
         </View>
