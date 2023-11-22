@@ -36,7 +36,7 @@ function App() {
   const loadJWT = useCallback(async () => {
     try {
       const jwt = await SecureStore.getItemAsync('accessToken');
-      console.log('JWT from SecureStore:', jwt);
+      //console.log('JWT from SecureStore:', jwt);
   
       if (jwt) {
         setAuthState({
