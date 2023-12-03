@@ -12,6 +12,7 @@ import { useCallback } from 'react';
 import { useEffect , useState} from 'react';
 import { AuthContext, AuthProvider } from './src/context/AuthContext';
 import { axiosContext, AxiosProvider } from './src/context/axiosContext'; // AxiosProvider import ekledim
+import { TodoProvider } from './src/context/TodoContext';
 
 SystemUI.setBackgroundColorAsync("#24292E");
 
@@ -21,7 +22,9 @@ const AppWrapper = () => {
   return (
     <AuthProvider>
       <AxiosProvider>
+        <TodoProvider>
         <App />
+        </TodoProvider>
       </AxiosProvider>
     </AuthProvider>
   );
