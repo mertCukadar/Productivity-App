@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState , useContext } from "react";
 import { StyleSheet, Text, Pressable, SafeAreaView , View, TextInput , ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
 import { TodoItem } from "../../component/Todo";
+import { axiosContext } from "../../context/axiosContext";
+import * as SecureStore from 'expo-secure-store';
+import { TodoContext } from "../../context/TodoContext";
+
 
 function onPressFunction() {
     console.log("pressed");
@@ -11,14 +15,49 @@ function onPressFunction() {
 
 
 
-
 export function TodoScreen(props) {
+    const todoContext = useContext(TodoContext);
+    const {publicAxios} = useContext(axiosContext);
+
     const [text , setText] = useState('')
     const [todos , setTodos] = useState([])
+
+   
+    // const seetoken = async () => {
+    //     try {
+    //         const accessToken = await SecureStore.getItemAsync('accessToken');
+    //         const refreshToken = await SecureStore.getItemAsync('refreshToken');
+    //         console.log(accessToken);
+    //         console.log(refreshToken);
+    //     }
+    //     catch (err) {
+    //         console.log(err);
+    //     }
+    // }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const accessToken = await SecureStore.getItemAsync('accessToken');
+                const response = await publicAxios.get('/Todo/getTodos/', {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                    },
+                });
+                setTodos(response.data);
+            } catch (error) {
+                console.error('Error :', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+      
 
     function addTodo() {
         // grep text inpu and add to todo list
         if (text.trim() != '') {
+            console.log(text);
             setTodos([...todos , text]);
             setText('');
         }
@@ -44,12 +83,13 @@ export function TodoScreen(props) {
             {/*Todo Component  */}
                 <View style = {styles.todoWrapper}>
                     <ScrollView>
+                        {/* Condition will be refactoring */}
                         {todos.map((todo , index) => {
-                            return <TodoItem
-                            key = {index}
-                            todoText = {todo}
-                            isDone = {false}/>
-                           
+                            if (todo.completed == false){
+                                return <TodoItem
+                                key = {index}
+                                todo = {todo}/>
+                            }
                         })}
                     
 
@@ -74,6 +114,13 @@ export function TodoScreen(props) {
               
                 <View style = {styles.doneWrapper}>
                 <ScrollView>
+                    {todos.map((todo , index) => {
+                                if (todo.completed == true){
+                                    return <TodoItem
+                                    key = {index}
+                                    todo = {todo}/>
+                                }
+                            })}
                     
 
                 </ScrollView>
