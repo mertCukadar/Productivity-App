@@ -8,7 +8,7 @@ import { TodoModal } from "./ModalView";
 
 
 export function TodoItem(props) {
-  const { onPress, todoText, width, disabled, priority, isDone} = props;
+  const { onPress, todoText, width, disabled, priority , todo} = props;
   const [todoFieldText, setTodoFieldText] = useState(todoText);
   const [assigneeText, setAssigneeText] = useState('');
   const [subjectTagText, setSubjectTagText] = useState('');
@@ -16,20 +16,23 @@ export function TodoItem(props) {
   const [descriptionText, setDescriptionText] = useState('');
   let assignee , subjectTag , description;
 
+  
+
+
 
   return (
  <View style = {styles.container}>
   <Pressable onPress={() => setModalVisible(true)}>
     <View style={styles.todoContainer}>
-      {isDone && <View style={styles.doneContainer}></View>}
+      {todo.completed && <View style={styles.doneContainer}></View>}
       <View style={styles.leftSide}>
         <View style={styles.priorty}></View>
       </View>
 
       <View style={styles.elementWrapper}>
-        <Text style={styles.itemText}>{todoFieldText}</Text>
+        <Text style={styles.itemText}>{todo.title}</Text>
         <View style={styles.subjectTagWrapper}>
-          <Text style={{ color: 'white' }}>{subjectTagText}</Text>
+          <Text style={{ color: 'white' }}>{todo.subject}</Text>
         </View>
       </View>
 
