@@ -1,5 +1,5 @@
 import React, { useEffect, useState , useContext } from "react";
-import { StyleSheet, Text, Pressable, SafeAreaView , View, TextInput , ScrollView } from 'react-native';
+import { Text, Pressable, SafeAreaView , View, TextInput , ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
@@ -7,6 +7,7 @@ import { TodoItem } from "../../component/Todo";
 import { axiosContext } from "../../context/axiosContext";
 import * as SecureStore from 'expo-secure-store';
 import { TodoContext } from "../../context/TodoContext";
+import { styles } from "./styles";
 
 
 function onPressFunction() {
@@ -23,18 +24,6 @@ export function TodoScreen(props) {
     const [todos , setTodos] = useState([])
 
    
-    // const seetoken = async () => {
-    //     try {
-    //         const accessToken = await SecureStore.getItemAsync('accessToken');
-    //         const refreshToken = await SecureStore.getItemAsync('refreshToken');
-    //         console.log(accessToken);
-    //         console.log(refreshToken);
-    //     }
-    //     catch (err) {
-    //         console.log(err);
-    //     }
-    // }
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -53,15 +42,33 @@ export function TodoScreen(props) {
         fetchData();
     }, []);
       
-
-    function addTodo() {
-        // grep text inpu and add to todo list
-        if (text.trim() != '') {
-            console.log(text);
-            setTodos([...todos , text]);
-            setText('');
+    const todo_data = {
+        title: text,
+        description: "None",
+        subject: "None",
+        completed: false,
+    };
+    
+    async function addTodo() {
+        // grep text input and add to todo list
+        const accessToken = await SecureStore.getItemAsync('accessToken');
+        try {
+            console.log('Adding todo...');
+            console.log('Todo data:', todo_data);
+            const response = await publicAxios.post('/Todo/getTodos/', todo_data, {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            });
+            console.log('Todo added successfully:', response.data);
+            // assuming response.data contains the added todo
+        } catch (error) {
+            console.error('Error:', error);
         }
     }
+    
+    // Make sure you have the necessary imports like SecureStore and publicAxios
+    
     
     return (
           
@@ -134,107 +141,6 @@ export function TodoScreen(props) {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: 'center',
-        backgroundColor: '#24292E',
-    },
-    searchWrapper: {
-       
-        justifyContent: "center",
-        alignItems: 'center',
-        backgroundColor: '#2B3137',
-        borderRadius: 20,
-        marginTop: 50,
-        marginBottom: 30,
-        width: Dimensions.get("window").width * 0.9,
-        height: 50,
-    },
-    todoWrapper: {
-        flex: 3,
-        alignItems: 'center',
-        backgroundColor: '#2B3137',
-        marginBottom: 30,
-        width: Dimensions.get("window").width * 0.9,
-        height: Dimensions.get("window").height * 0.5,
-        borderRadius: 20,
-    },
-    doneWrapper: {
-        flex: 2,
-        justifyContent: "center",
-        alignItems: 'center',
-        backgroundColor: '#2B3137',
-        width: Dimensions.get("window").width * 0.9,
-        borderRadius: 20,
-        opacity: 0.8,
-        marginBottom: 30,
-    },
-    todoInput: {
-        width:  Dimensions.get('window').width * 0.8,
-        height: 50,
-        backgroundColor: '#30373E',
-        borderRadius: 15,
-        color: "white",
-        fontSize: 17,
-        paddingLeft: 50,
-        flexWrap: "wrap",
-   
-      },
-      
-    todoInputWrapper: {
-        justifyContent: "center",
-        alignItems: 'center',
-        height: 50,
-        marginBottom : 7,
-        flexDirection: "row",
-        marginTop: 7,
-        
-        
-        
-    },
-    pressableWrapper: {
-        position: "absolute",
-        left: 0,
-        zIndex: 1,
-        width: 40,
-        height: 50,
-        borderRadius: 15,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#1d96b6",
-        opacity: 0.8,
-        
-        
-    },
 
-    TodoSearchInput: {
-        width: Dimensions.get("window").width * 0.9,
-        height: 50,
-        backgroundColor: '#30373E',
-        borderRadius: 15,
-        color: "white",
-        fontSize: 17,
-        paddingLeft: 50,
-        
-   
-      },
-
-      filterIconStyle: {
-        position: "absolute",
-        left: 0,
-        zIndex: 1,
-        width: 40,
-        height: 50,
-        borderRadius: 15,
-        alignItems: "center",
-        justifyContent: "center",
-        opacity: 0.5,
-        backgroundColor: "#414C57",
-    
-      }
-
-});
 
 export default TodoScreen;
