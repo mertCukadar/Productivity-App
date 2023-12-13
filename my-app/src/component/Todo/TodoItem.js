@@ -1,28 +1,25 @@
-import React, { useState , useEffect } from "react";
-import { StyleSheet, Text, Pressable, View, Image , Modal , TextInput } from 'react-native';
-import CheckBox from 'expo-checkbox';
+import React, { useState , useEffect , useContext } from "react";
+import { StyleSheet, Text, Pressable, View, Image} from 'react-native';
 import { Dimensions } from "react-native";
 import { TodoModal } from "./ModalView";
+import TodoContext from "../../context/TodoContext"
 
 
 
 
 export function TodoItem(props) {
-  const { onPress, todoText, width, disabled, priority , todo} = props;
-  const [todoFieldText, setTodoFieldText] = useState(todoText);
-  const [assigneeText, setAssigneeText] = useState('');
-  const [subjectTagText, setSubjectTagText] = useState('');
-  const [modalVisible, setModalVisible] = useState(false);
-  const [descriptionText, setDescriptionText] = useState('');
+  
+  const { todo } = props;
   let assignee , subjectTag , description;
+
+  const todoContext = useContext(TodoContext);
+
 
   
 
-
-
   return (
  <View style = {styles.container}>
-  <Pressable onPress={() => setModalVisible(true)}>
+  <Pressable onPress={() => todoContext.setModalVisible(true)}>
     <View style={styles.todoContainer}>
       {todo.completed && <View style={styles.doneContainer}></View>}
       <View style={styles.leftSide}>
@@ -44,7 +41,7 @@ export function TodoItem(props) {
       </View>
     </View>
     </Pressable>
-    <TodoModal modalVisible = {modalVisible} setModalVisible = {setModalVisible}/>
+    <TodoModal modalVisible = {todoContext.modalVisible}/>
       </View>
   );
 }
