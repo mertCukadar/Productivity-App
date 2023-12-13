@@ -1,5 +1,5 @@
 import React, { useEffect, useState , useContext } from "react";
-import { Text, Pressable, SafeAreaView , View, TextInput , ScrollView } from 'react-native';
+import { Text, TouchableOpacity, SafeAreaView , View, TextInput , ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Dimensions } from 'react-native';
@@ -7,7 +7,9 @@ import { TodoItem } from "../../component/Todo";
 import { axiosContext } from "../../context/axiosContext";
 import * as SecureStore from 'expo-secure-store';
 import { TodoContext } from "../../context/TodoContext";
+import { Entypo } from '@expo/vector-icons';
 import { styles } from "./styles";
+import { KeyboardAvoidingView } from "react-native";
 
 
 function onPressFunction() {
@@ -22,8 +24,13 @@ export function TodoScreen(props) {
 
     const [text , setText] = useState('')
     const [todos , setTodos] = useState([])
+    const [isTodoVisible , setTodoVisible] = useState(false)
 
-   
+    const toggleTodoVisible = () => {
+        setTodoVisible(!isTodoVisible)
+    }
+
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -72,68 +79,48 @@ export function TodoScreen(props) {
     
     return (
           
-                     <View style={styles.container}>
+            <View style={styles.container}>
             
             {/* Search Component */}
-                <View style = {styles.searchWrapper}>
+                <View style = {styles.filterSearchWrapper}>
                     <View style = {styles.filterIconStyle}>
                         <AntDesign name="filter" size={24} color="white"  />
                     </View>
                     <TextInput
-                     style = {styles.TodoSearchInput} 
+                     style = {styles.TodoFilterInput} 
                      placeholder=" Search In Todo" 
                      placeholderTextColor={"white"}
                      maxLength={40}
                      ></TextInput>
-                </View>
+                </View>   
 
-            {/*Todo Component  */}
-                <View style = {styles.todoWrapper}>
-                    <ScrollView>
-                        {/* Condition will be refactoring */}
-                        {todos.map((todo , index) => {
-                            if (todo.completed == false){
-                                return <TodoItem
-                                key = {index}
-                                todo = {todo}/>
-                            }
-                        })}
-                    
-
-                    </ScrollView>
-
-                    <View style = {styles.todoInputWrapper}>
-                        <Pressable onPress={addTodo} style = {styles.pressableWrapper}>
-                            <AntDesign name="plus" size={24} color="white" />
-                        </Pressable>
-                        <TextInput
-                        placeholder="Add Todo"
-                        placeholderTextColor={"white"}
-                        style = {styles.todoInput}
-                        onChangeText={(newText) => setText(newText)}
-                        defaultValue={text}
-                        ></TextInput>
-                     </View>
-                  
-                </View>
-
-            {/* DoneContainer */}
-              
-                <View style = {styles.doneWrapper}>
-                <ScrollView>
-                    {todos.map((todo , index) => {
-                                if (todo.completed == true){
-                                    return <TodoItem
-                                    key = {index}
-                                    todo = {todo}/>
-                                }
-                            })}
-                    
-
+                {/* Todo List Component */}
+                <ScrollView style={{ ...styles.todoColButton, height: isTodoVisible ? 50 : Dimensions.get("window").height * 0.6 }}>
+                    <TouchableOpacity onPress = {toggleTodoVisible} style = {styles.todoColButtonContainer}>
+                        <Text style = {styles.todoCBText}>Todo List</Text>
+                        <Entypo name = {isTodoVisible ? ("triangle-down") : ("triangle-up")}   size={24} color="white" />
+                    </TouchableOpacity>
                 </ScrollView>
+                
+               
+
+
+                <View style = {styles.addTodoContainer}>
+                    <TextInput 
+                    placeholder="Add Todo"
+                    placeholderTextColor={"white"}
+                    style = {styles.TodoSearchInput}
+                    >
+
+                    </TextInput>
+                    <TouchableOpacity onPress = {onPressFunction} style = {styles.plusContainer}>
+                        <Entypo name="plus" size={25} color="black" />
+                    </TouchableOpacity>
                 </View>
 
-                </View>
+            </View>
+
+               
           
           
     
