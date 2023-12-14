@@ -25,6 +25,11 @@ export function TodoScreen(props) {
     const [text , setText] = useState('')
     const [todos , setTodos] = useState([])
     const [isTodoVisible , setTodoVisible] = useState(false)
+    const [isDoneVisible , setDoneVisible] = useState(false)
+
+    const toggleDoneVisible = () => {
+        setDoneVisible(!isDoneVisible)  
+    }
 
     const toggleTodoVisible = () => {
         setTodoVisible(!isTodoVisible)
@@ -102,7 +107,13 @@ export function TodoScreen(props) {
                     </TouchableOpacity>
                 </ScrollView>
                 
-               
+               {/* Todo List Component */}
+               <ScrollView style={{ ...styles.doneColButton, height: isDoneVisible ? 50 : Dimensions.get("window").height * 0.6 }}>
+                    <TouchableOpacity onPress = {toggleDoneVisible} style = {styles.todoColButtonContainer}>
+                        <Text style = {styles.todoCBText}> Done</Text>
+                        <Entypo name = {isDoneVisible ? ("triangle-down") : ("triangle-up")}   size={24} color="white" />
+                    </TouchableOpacity>
+                </ScrollView>
 
 
                 <View style = {styles.addTodoContainer}>
