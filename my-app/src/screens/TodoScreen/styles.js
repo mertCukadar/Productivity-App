@@ -3,50 +3,33 @@ import { StyleSheet, Dimensions } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
         alignItems: 'center',
         backgroundColor: '#24292E',
+        justifyContent: "flex-start",
     },
-    filterSearchWrapper: {
-        top: 50,
-        position: "absolute",
-        backgroundColor: '#2B3137',
-        borderRadius: 20,
+// filter Container
+      filterSearchWrapper: {
+        flexDirection: "row",
+        backgroundColor: "#30373E",
+        borderRadius: 15,
         width: Dimensions.get("window").width * 0.9,
         height: 50,
-    },
-    TodoFilterInput: {
-        width: Dimensions.get("window").width * 0.9,
-        height: 50,
-        backgroundColor: '#30373E',
-        borderRadius: 15,
-        color: "white",
-        fontSize: 17,
-        paddingLeft: 50,
-      },
-
-      filterIconStyle: {
-        position: "absolute",
-        left: 0,
-        zIndex: 1,
-        width: 40,
-        height: 50,
-        borderRadius: 15,
         alignItems: "center",
-        justifyContent: "center",
-        opacity: 0.5,
-        backgroundColor: "#414C57",
-    
+        paddingLeft: 20,
+        paddingRight: 20,
+        justifyContent: "space-between",
+        marginTop: 40,
       },
+    
       addTodoContainer : {
         position: "absolute",
-        bottom: 10,
         flexDirection: "row",
         width: Dimensions.get("window").width,
         height: Dimensions.get("window").width * 0.15,
         alignItems: "center",
         justifyContent: "center",
-       
+        bottom: 10,
+               
       },
       plusContainer: {
         width: Dimensions.get("window").width * 0.15,
@@ -66,31 +49,34 @@ const styles = StyleSheet.create({
         fontSize: 17,
         paddingLeft: 50,
       },
-        todoColButton: {
-            top: 120,
-            position: "absolute",
-            width: Dimensions.get("window").width * 0.9,
-            backgroundColor: "#30373E",
-            borderRadius: 15,
-
-        },
-        todoCBText: {
-            color: "white",
-            fontSize: 17,
-            borderRadius: 15,
-        },
-        todoColButtonContainer:{
-            width: Dimensions.get("window").width * 0.9,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingLeft: 30,
-            paddingRight: 30,
-            alignItems: "center",
-            height : 50,
-            borderRadius: 15,
-            backgroundColor: "#30373E"
-        }
+      todoListContainer: {
+        width: Dimensions.get("window").width * 0.9,
+        justifyContent: "flex-start",
+        backgroundColor: "#30373E",
+        borderRadius: 15,
+        marginTop: 20,
+      },
+      todoListHeader: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginTop: 10,
+        alignItems: "center",
+        paddingLeft: 20,
+        paddingRight: 20,
+      },
        
+      todoListTitle: {
+        color: "white",
+        fontSize: 17,
+      },
+      TodoFilterInput: {
+        width: Dimensions.get("window").width * 0.7,
+        height: 50,
+        backgroundColor: '#30373E',
+        borderRadius: 15,
+        color: "white",
+        fontSize: 17,
+      },
 });
 
 export  {styles};
