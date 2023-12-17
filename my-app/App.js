@@ -82,7 +82,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {authState.authenticated === true ? (
+        {authState.authenticated === false ? (
           <Stack.Screen
             name="LoginScreen"
             component={LoginScreen}
