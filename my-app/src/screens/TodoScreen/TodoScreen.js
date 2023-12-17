@@ -111,13 +111,13 @@ export function TodoScreen(props) {
                 <View style={[styles.todoListContainer, containerStyle]}>
                     <TouchableOpacity onPress = {toggleTodoVisible} style = {styles.todoListHeader}>
                         <Text style = {styles.todoListTitle}>Todo List</Text>
-                        <AntDesign name="downcircleo" size={24} color="white" />
+                        <AntDesign name = {isTodoVisible ? ("downcircleo") : ("upcircleo")} size={24} color="white" />
                     </TouchableOpacity>
                 </View>
                 <View style={[styles.todoListContainer, containerStyle2]}>
                     <TouchableOpacity onPress = {toggleDoneVisible} style = {styles.todoListHeader}>
                         <Text style = {styles.todoListTitle}>Done</Text>
-                        <AntDesign name="downcircleo" size={24} color="white" />
+                        <AntDesign name = {isDoneVisible ? ("downcircleo") : ("upcircleo")} size={24} color="white" />
                     </TouchableOpacity>
                 </View>
                 
