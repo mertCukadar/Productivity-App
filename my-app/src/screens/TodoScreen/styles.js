@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         justifyContent: "space-between",
         marginTop: 40,
+        marginBottom: 20
       },
     
       addTodoContainer : {
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         backgroundColor: "#30373E",
         borderRadius: 15,
-        marginTop: 20,
+        marginBottom: 10,
       },
       todoListHeader: {
         flexDirection: "row",
