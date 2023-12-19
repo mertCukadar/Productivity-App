@@ -24,26 +24,27 @@ export function TodoScreen(props) {
 
     const [text , setText] = useState('')
     const [todos , setTodos] = useState([])
-<<<<<<< HEAD
-    const [isTodoVisible , setTodoVisible] = useState(true)
+
+
+    const [isTodoVisible , setTodoVisible] = useState(false)
     const [isDoneVisible , setDoneVisible] = useState(false)
-    const [doneButtonMarginTop, setDoneButtonMarginTop] = useState(0);
-
-
-    const toggleDoneVisible = () => {
-        setDoneVisible(!isDoneVisible)
-        setDoneButtonMarginTop(isDoneVisible ? 0 : 350);
-    }
-=======
-    const [isTodoVisible , setTodoVisible] = useState(false)
->>>>>>> parent of fbabc6c (workspace update)
-    const [isTodoVisible , setTodoVisible] = useState(false)
 
     const toggleTodoVisible = () => {
         setTodoVisible(!isTodoVisible)
-        setDoneButtonMarginTop(isTodoVisible ? 350 : 0);
     }
 
+    const toggleDoneVisible = () => {
+        setDoneVisible(!isDoneVisible)
+    }
+
+
+    const containerStyle = {
+        height: isTodoVisible ? Dimensions.get("window").height * 0.6 : 50,
+      };
+
+    const containerStyle2 = {
+        height: isDoneVisible ? Dimensions.get("window").height * 0.6 : 50,
+        };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -97,27 +98,30 @@ export function TodoScreen(props) {
             
             {/* Search Component */}
                 <View style = {styles.filterSearchWrapper}>
-                    <View style = {styles.filterIconStyle}>
-                        <AntDesign name="filter" size={24} color="white"  />
-                    </View>
                     <TextInput
                      style = {styles.TodoFilterInput} 
                      placeholder=" Search In Todo" 
                      placeholderTextColor={"white"}
                      maxLength={40}
                      ></TextInput>
+                     <View style = {styles.filterIconStyle}>
+                        <AntDesign name="filter" size={24} color="white"  />
+                    </View>
                 </View>   
                        
                 {/* Todo List Component */}
-                <ScrollView style={{ ...styles.todoColButton, height: isTodoVisible ? 50 : Dimensions.get("window").height * 0.6,  }}>
-                    <TouchableOpacity onPress = {toggleTodoVisible} style = {styles.todoColButtonContainer} >
-                        <Text style = {styles.todoCBText}>Todo List</Text>
-                        <Entypo name = {isTodoVisible ? ("triangle-down") : ("triangle-up")}   size={24} color="white" />
+                <View style={[styles.todoListContainer, containerStyle]}>
+                    <TouchableOpacity onPress = {toggleTodoVisible} style = {styles.todoListHeader}>
+                        <Text style = {styles.todoListTitle}>Todo List</Text>
+                        <AntDesign name = {isTodoVisible ? ("downcircleo") : ("upcircleo")} size={24} color="white" />
                     </TouchableOpacity>
-                    {todos.map((todo, index) => (
-        <TodoItem key={index} todo={todo} />
-      ))}
-                </ScrollView>
+                </View>
+                <View style={[styles.todoListContainer, containerStyle2]}>
+                    <TouchableOpacity onPress = {toggleDoneVisible} style = {styles.todoListHeader}>
+                        <Text style = {styles.todoListTitle}>Done</Text>
+                        <AntDesign name = {isDoneVisible ? ("downcircleo") : ("upcircleo")} size={24} color="white" />
+                    </TouchableOpacity>
+                </View>
                 
                
 
@@ -133,7 +137,10 @@ export function TodoScreen(props) {
                     <TouchableOpacity onPress = {onPressFunction} style = {styles.plusContainer}>
                         <Entypo name="plus" size={25} color="black" />
                     </TouchableOpacity>
-                </View>
+                </View> 
+
+                
+                
 
             </View>
 
