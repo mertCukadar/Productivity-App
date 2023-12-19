@@ -37,6 +37,7 @@ export function TodoScreen(props) {
 =======
     const [isTodoVisible , setTodoVisible] = useState(false)
 >>>>>>> parent of fbabc6c (workspace update)
+    const [isTodoVisible , setTodoVisible] = useState(false)
 
     const toggleTodoVisible = () => {
         setTodoVisible(!isTodoVisible)
@@ -118,20 +119,7 @@ export function TodoScreen(props) {
       ))}
                 </ScrollView>
                 
-<<<<<<< HEAD
-               {/* Todo List Component */}
-               <ScrollView style={{ ...styles.doneColButton, height: isDoneVisible ? 50 : Dimensions.get("window").height * 0.6,  marginTop: doneButtonMarginTop, }}>
-                    <TouchableOpacity onPress = {toggleDoneVisible} style = {styles.todoColButtonContainer}>
-                        <Text style = {styles.todoCBText}> Done</Text>
-                        <Entypo name = {isDoneVisible ? ("triangle-down") : ("triangle-up")}   size={24} color="white" />
-                    </TouchableOpacity>
-                    {todos.map((todo, index) => (
-        <TodoItem key={index} todo={todo} />
-      ))}
-                </ScrollView>
-=======
                
->>>>>>> parent of fbabc6c (workspace update)
 
 
                 <View style = {styles.addTodoContainer}>
