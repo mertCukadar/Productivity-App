@@ -20,7 +20,7 @@ const AxiosProvider = ({ children }) => {
   });
 
   const publicAxios = axios.create({
-    baseURL: 'http://192.168.1.7:8002/api',
+    baseURL: 'http://192.168.241.195:8002/api',
   });
 
   authAxios.interceptors.request.use(

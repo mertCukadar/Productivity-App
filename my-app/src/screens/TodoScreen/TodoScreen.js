@@ -24,6 +24,8 @@ export function TodoScreen(props) {
 
     const [text , setText] = useState('')
     const [todos , setTodos] = useState([])
+
+
     const [isTodoVisible , setTodoVisible] = useState(false)
     const [isDoneVisible , setDoneVisible] = useState(false)
 
@@ -88,7 +90,7 @@ export function TodoScreen(props) {
     }
     
     // Make sure you have the necessary imports like SecureStore and publicAxios
-    
+ 
     
     return (
           
@@ -106,7 +108,7 @@ export function TodoScreen(props) {
                         <AntDesign name="filter" size={24} color="white"  />
                     </View>
                 </View>   
-
+                       
                 {/* Todo List Component */}
                 <View style={[styles.todoListContainer, containerStyle]}>
                     <TouchableOpacity onPress = {toggleTodoVisible} style = {styles.todoListHeader}>
@@ -149,7 +151,5 @@ export function TodoScreen(props) {
 
     );
 }
-
-
 
 export default TodoScreen;
