@@ -24,10 +24,19 @@ export function TodoScreen(props) {
 
     const [text , setText] = useState('')
     const [todos , setTodos] = useState([])
-    const [isTodoVisible , setTodoVisible] = useState(false)
+    const [isTodoVisible , setTodoVisible] = useState(true)
+    const [isDoneVisible , setDoneVisible] = useState(false)
+    const [doneButtonMarginTop, setDoneButtonMarginTop] = useState(0);
+
+
+    const toggleDoneVisible = () => {
+        setDoneVisible(!isDoneVisible)
+        setDoneButtonMarginTop(isDoneVisible ? 0 : 350);
+    }
 
     const toggleTodoVisible = () => {
         setTodoVisible(!isTodoVisible)
+        setDoneButtonMarginTop(isTodoVisible ? 350 : 0);
     }
 
 
@@ -75,7 +84,7 @@ export function TodoScreen(props) {
     }
     
     // Make sure you have the necessary imports like SecureStore and publicAxios
-    
+ 
     
     return (
           
@@ -93,16 +102,28 @@ export function TodoScreen(props) {
                      maxLength={40}
                      ></TextInput>
                 </View>   
-
+                       
                 {/* Todo List Component */}
-                <ScrollView style={{ ...styles.todoColButton, height: isTodoVisible ? 50 : Dimensions.get("window").height * 0.6 }}>
-                    <TouchableOpacity onPress = {toggleTodoVisible} style = {styles.todoColButtonContainer}>
+                <ScrollView style={{ ...styles.todoColButton, height: isTodoVisible ? 50 : Dimensions.get("window").height * 0.6,  }}>
+                    <TouchableOpacity onPress = {toggleTodoVisible} style = {styles.todoColButtonContainer} >
                         <Text style = {styles.todoCBText}>Todo List</Text>
                         <Entypo name = {isTodoVisible ? ("triangle-down") : ("triangle-up")}   size={24} color="white" />
                     </TouchableOpacity>
+                    {todos.map((todo, index) => (
+        <TodoItem key={index} todo={todo} />
+      ))}
                 </ScrollView>
                 
-               
+               {/* Todo List Component */}
+               <ScrollView style={{ ...styles.doneColButton, height: isDoneVisible ? 50 : Dimensions.get("window").height * 0.6,  marginTop: doneButtonMarginTop, }}>
+                    <TouchableOpacity onPress = {toggleDoneVisible} style = {styles.todoColButtonContainer}>
+                        <Text style = {styles.todoCBText}> Done</Text>
+                        <Entypo name = {isDoneVisible ? ("triangle-down") : ("triangle-up")}   size={24} color="white" />
+                    </TouchableOpacity>
+                    {todos.map((todo, index) => (
+        <TodoItem key={index} todo={todo} />
+      ))}
+                </ScrollView>
 
 
                 <View style = {styles.addTodoContainer}>
@@ -127,7 +148,5 @@ export function TodoScreen(props) {
 
     );
 }
-
-
 
 export default TodoScreen;
