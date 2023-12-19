@@ -22,12 +22,12 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         color: "white",
         fontSize: 17,
-        paddingLeft: 30,
+        paddingLeft: 50,
       },
 
       filterIconStyle: {
         position: "absolute",
-        right: 0,
+        left: 0,
         zIndex: 1,
         width: 40,
         height: 50,
@@ -84,21 +84,12 @@ const styles = StyleSheet.create({
             flexDirection: "row",
             justifyContent: "space-between",
             paddingLeft: 30,
-            paddingRight: 25,
+            paddingRight: 30,
             alignItems: "center",
             height : 50,
             borderRadius: 15,
             backgroundColor: "#30373E"
-        },
-        doneColButton : {
-            top: 180,
-            position: "absolute",
-            height: 50,
-            width: Dimensions.get("window").width * 0.9,
-            backgroundColor: "#30373E",
-            borderRadius: 15,
-        },
-        
+        }
        
 });
 
