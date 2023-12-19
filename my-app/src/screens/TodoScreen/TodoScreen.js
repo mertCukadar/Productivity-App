@@ -24,19 +24,8 @@ export function TodoScreen(props) {
 
     const [text , setText] = useState('')
     const [todos , setTodos] = useState([])
-<<<<<<< HEAD
-    const [isTodoVisible , setTodoVisible] = useState(true)
-    const [isDoneVisible , setDoneVisible] = useState(false)
-    const [doneButtonMarginTop, setDoneButtonMarginTop] = useState(0);
 
 
-    const toggleDoneVisible = () => {
-        setDoneVisible(!isDoneVisible)
-        setDoneButtonMarginTop(isDoneVisible ? 0 : 350);
-    }
-=======
-    const [isTodoVisible , setTodoVisible] = useState(false)
->>>>>>> parent of fbabc6c (workspace update)
     const [isTodoVisible , setTodoVisible] = useState(false)
 
     const toggleTodoVisible = () => {
