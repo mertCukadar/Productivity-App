@@ -127,15 +127,11 @@ export function TodoScreen(props) {
 
 
                 <View style = {styles.addTodoContainer}>
-                    <TextInput 
-                    placeholder="Add Todo"
-                    placeholderTextColor={"white"}
-                    style = {styles.TodoSearchInput}
-                    >
+                    
 
-                    </TextInput>
+                    
                     <TouchableOpacity onPress = {onPressFunction} style = {styles.plusContainer}>
-                        <Entypo name="plus" size={25} color="black" />
+                        <Entypo name="plus" size={25} color="white" />
                     </TouchableOpacity>
                 </View> 
 
