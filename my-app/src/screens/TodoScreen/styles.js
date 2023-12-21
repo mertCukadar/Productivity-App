@@ -25,11 +25,12 @@ const styles = StyleSheet.create({
       addTodoContainer : {
         position: "absolute",
         flexDirection: "row",
-        width: Dimensions.get("window").width,
+        width: Dimensions.get("window").width * 0.9,
         height: Dimensions.get("window").width * 0.15,
         alignItems: "center",
-        justifyContent: "center",
-        bottom: 10,
+        justifyContent: "flex-end",
+        marginRight: 20,
+        bottom: 20,
                
       },
       plusContainer: {
@@ -55,6 +56,7 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         backgroundColor: "#30373E",
         borderRadius: 15,
+        height: 50,
         marginBottom: 10,
       },
       todoListHeader: {
@@ -78,6 +80,9 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 17,
       },
+      List: {
+        backgroundColor: "red",
+      }
 });
 
 export  {styles};

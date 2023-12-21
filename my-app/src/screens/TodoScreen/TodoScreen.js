@@ -26,7 +26,7 @@ export function TodoScreen(props) {
     const [todos , setTodos] = useState([])
 
 
-    const [isTodoVisible , setTodoVisible] = useState(false)
+    const [isTodoVisible , setTodoVisible] = useState(true)
     const [isDoneVisible , setDoneVisible] = useState(false)
 
     const toggleTodoVisible = () => {
@@ -39,11 +39,11 @@ export function TodoScreen(props) {
 
 
     const containerStyle = {
-        height: isTodoVisible ? Dimensions.get("window").height * 0.6 : 50,
+        height: isTodoVisible ? Dimensions.get("window").height * 0.65 : 50,
       };
 
     const containerStyle2 = {
-        height: isDoneVisible ? Dimensions.get("window").height * 0.6 : 50,
+        height: isDoneVisible ? Dimensions.get("window").height * 0.65 : 50,
         };
 
     useEffect(() => {
@@ -115,12 +115,18 @@ export function TodoScreen(props) {
                         <Text style = {styles.todoListTitle}>Todo List</Text>
                         <AntDesign name = {isTodoVisible ? ("downcircleo") : ("upcircleo")} size={24} color="white" />
                     </TouchableOpacity>
+                    <ScrollView style = {{backgroundColor: "#414C57" , marginTop: 20 , borderBottomRightRadius : 15 , borderBottomLeftRadius : 15}}>
+
+                    </ScrollView>
                 </View>
                 <View style={[styles.todoListContainer, containerStyle2]}>
                     <TouchableOpacity onPress = {toggleDoneVisible} style = {styles.todoListHeader}>
                         <Text style = {styles.todoListTitle}>Done</Text>
                         <AntDesign name = {isDoneVisible ? ("downcircleo") : ("upcircleo")} size={24} color="white" />
                     </TouchableOpacity>
+                    <ScrollView style = {{backgroundColor: "#414C57" , marginTop: 20 , borderBottomRightRadius : 15 , borderBottomLeftRadius : 15}}>
+
+                    </ScrollView>
                 </View>
                 
                
