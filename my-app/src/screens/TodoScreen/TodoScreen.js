@@ -3,9 +3,8 @@ import {Text,TouchableOpacity, View,TextInput, ScrollView, Modal, Dimensions,} f
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { axiosContext } from "../../context/axiosContext";
 import * as SecureStore from "expo-secure-store";
-import { AdTodoModal } from "../../component/ToDoModal";
 import { TodoContext } from "../../context/TodoContext";
-
+import { ToDoModal } from "../../component/AddTodoModal/";
 import { styles } from "./styles";
 
 function onPressFunction() {
@@ -128,6 +127,7 @@ export function TodoScreen(props) {
           <AntDesign name="filter" size={24} color="white" />
         </View>
       </View>
+      <ToDoModal modalVisible={modalVisible} toggleModal={toggleModal} addTodo={addTodo} />
 
       <View style={[styles.todoListContainer, containerStyle]}>
         <TouchableOpacity
@@ -178,74 +178,7 @@ export function TodoScreen(props) {
         </TouchableOpacity>
       </View>
 
-      <Modal
-        animationType="slide" //bunu beğenim :)
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={toggleModal}
-      >
-        <View style={modalStyle}>
-          <View style={modalContentStyle}>
-            <View style={styles.modalHeader}>
-              <TouchableOpacity onPress={toggleModal}>
-                <AntDesign name="close" size={24} color="black" />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.modalContent}>
-              <TextInput
-                style={[
-                  styles.modalTextInput,
-                  {
-
-                    borderRadius: 8,
-                    padding: 15,
-                    fontSize: 16,
-                    backgroundColor: "#82918e",
-                    shadowColor: "#000",
-                  shadowOffset: {
-                    width: 5,
-                    height: 5,
-                    
-                  },
-                  shadowOpacity: 0.5,
-                  shadowRadius: 3.84,
-                  elevation: 9,
-                  marginTop: -4, 
-                  paddingTop: 5,
-                  height: 70,
-                  
-                  },
-                ]}
-                placeholder="Todo Title"
-                placeholderTextColor="white"
-                onChangeText={(value) => setText(value)}
-                
-              />
-               <View style={{ borderBottomWidth: 2, borderBottomColor: "#dcdcdc", marginBottom: 10, marginTop: -25, opacity: 0.4 }} />
-               <View style={[
-            styles.modalTextInput,
-            {
-            borderRadius: 8,
-            padding: 15,
-            fontSize: 16,
-            backgroundColor: "#82918e",
-            shadowColor: "#000",
-            shadowOffset: {
-             width: 0,
-             height: 5,
-      },
-      shadowOpacity: 1,
-      shadowRadius: 3.84,
-      elevation: 8,
-      marginTop: 20,
-      paddingTop: 5,
-      height: 180,
-      width:250,
       
-      
-    },
-  ]}>
-  </View>
               <TouchableOpacity
                 style={[styles.modalAddButton, {marginTop:20}]}
                 onPress={() => {
@@ -255,10 +188,7 @@ export function TodoScreen(props) {
               >
               </TouchableOpacity>
             </View>
-          </View>
-        </View>
-      </Modal>
-    </View>
+    
   );
 }
 
