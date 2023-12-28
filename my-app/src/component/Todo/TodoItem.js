@@ -12,14 +12,16 @@ export function TodoItem(props) {
   const { todo } = props;
   let assignee , subjectTag , description;
 
-  const todoContext = useContext(TodoContext);
+  const onPressFun = () => {
+    console.log("pressed");
+  }
 
 
   
 
   return (
  <View style = {styles.container}>
-  <Pressable onPress={() => todoContext.setModalVisible(true)}>
+  <Pressable onPress={onPressFun}>
     <View style={styles.todoContainer}>
       {todo.completed && <View style={styles.doneContainer}></View>}
       <View style={styles.leftSide}>
@@ -41,7 +43,6 @@ export function TodoItem(props) {
       </View>
     </View>
     </Pressable>
-    <TodoModal modalVisible = {todoContext.modalVisible}/>
       </View>
   );
 }
