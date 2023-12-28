@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   },
   modalContentStyle: {
     width: Dimensions.get("window").width * 0.8,
-    height: Dimensions.get("window").height * 0.5,
+    height: Dimensions.get("window").height * 0.7,
     backgroundColor: "#414C57",
     borderRadius: 15,
     padding: 15,
@@ -21,11 +21,12 @@ export const styles = StyleSheet.create({
    
   },
   modalContent: {
+    flex: 1,
     alignItems: "center",
     height: Dimensions.get("window").height * 0.43,
   },
   modalTextInputContainer: {
-    marginTop:5, 
+    marginTop:10, 
     backgroundColor: "#414C57",
     width: "100%",
     borderRadius: 20,
@@ -59,12 +60,12 @@ export const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: "#353C44",
     alignItems: "center",
-    width: Dimensions.get("window").width * 0.7,
+    width: Dimensions.get("window").width * 0.75,
     justifyContent: "space-between",  
   },
   assignButton: {
     width: Dimensions.get("window").width * 0.35,
-    height: 35,
+    height: 30,
     backgroundColor: "#414C57",
     borderRadius: 20,
     marginTop: 10,
@@ -74,5 +75,51 @@ export const styles = StyleSheet.create({
     color: "white",
     fontSize: 14,
   },
+  SubjectContainer: {
+    marginTop: 10,
+    paddingRight: 10,
+    paddingLeft: 10,
+    height: 50,
+    flexDirection: "row",
+    borderRadius: 15,
+    backgroundColor: "#353C44",
+    alignItems: "center",
+    width: Dimensions.get("window").width * 0.75,  
+  },
+  subjectInput: {
+    color: "white",
+    fontSize: 16,
+    width: "100%",
+  },
 
+  estimatedTimeContainer: {
+    marginTop: 10,
+    paddingRight: 10,
+    paddingLeft: 10,
+    height: 30,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    width: Dimensions.get("window").width * 0.75,  
+  },
+
+
+  saveButton: {
+    marginTop: 20,
+    paddingRight: 10,
+    paddingLeft: 10,
+    height: 40,
+    borderRadius: 15,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#1d96b6",
+    width: Dimensions.get("window").width * 0.7,
+  },
+
+  attributesContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
