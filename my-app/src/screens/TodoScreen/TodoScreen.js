@@ -6,6 +6,7 @@ import * as SecureStore from "expo-secure-store";
 import { TodoContext } from "../../context/TodoContext";
 import { ToDoModal } from "../../component/AddTodoModal/";
 import { styles } from "./styles";
+import { TodoItem } from "../../component/Todo/TodoItem";
 
 function onPressFunction() {
   console.log("pressed");
@@ -148,7 +149,17 @@ export function TodoScreen(props) {
             borderBottomRightRadius: 15,
             borderBottomLeftRadius: 15,
           }}
-        ></ScrollView>
+        >
+    {todos.map((todo) => {
+  if (todo.completed === false) {
+    return <TodoItem key={todo.id} todo={todo} />;
+  }
+  return null; // veya başka bir şey dönebilirsiniz
+})}
+
+          
+
+        </ScrollView>
       </View>
       <View style={[styles.todoListContainer, containerStyle2]}>
         <TouchableOpacity
@@ -169,11 +180,18 @@ export function TodoScreen(props) {
             borderBottomRightRadius: 15,
             borderBottomLeftRadius: 15,
           }}
-        ></ScrollView>
+        >
+              {todos.map((todo) => {
+    if (todo.completed === true) {
+    return <TodoItem key={todo.id} todo={todo} />;
+  }
+  return null; // veya başka bir şey dönebilirsiniz
+})}
+        </ScrollView>
       </View>
 
       <View style={styles.addTodoContainer}>
-        <TouchableOpacity onPress={toggleModal} style={styles.plusContainer}>
+        <TouchableOpacity onPress={todoContext.toggleModelVisible} style={styles.plusContainer}>
           <Entypo name="plus" size={25} color="white" />
         </TouchableOpacity>
       </View>
