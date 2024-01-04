@@ -10,8 +10,18 @@ function TodoProvider({ children }) {
     setTodoData(newData);
   };
 
+  const toggleModelVisible = () => {
+    setModelVisible(!modelVisible);
+  };
+
+
   return (
-    <TodoContext.Provider value={{ todoData, updateTodoData , modelVisible , setModelVisible }}>
+    <TodoContext.Provider value={{ 
+      todoData, 
+      updateTodoData,
+      modelVisible, 
+      setModelVisible,
+      toggleModelVisible, }}>
       {children}
     </TodoContext.Provider>
   );
